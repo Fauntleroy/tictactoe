@@ -30,7 +30,7 @@
 	var nextTurn = function(){
 		var status = checkStatus();
 		turn = ( turn === AI )? PLAYER: AI;
-		if( turn === AI ){
+		if( turn === AI && status ){
 			setTimeout( aiMove, 750 );
 		}
 	};
@@ -91,8 +91,12 @@
 			var cell = firstEmptyCell( imminent_opponent_scores[0].path );
 			setCell( cell, AI );
 		}
-		else {
+		else if( possible_opponent_scores.length > 0 ){
 			var cell = firstEmptyCell( possible_opponent_scores[0].path );
+			setCell( cell, AI );
+		}
+		else if( possible_scores.length > 0 ){
+			var cell = firstEmptyCell( possible_scores[0].path );
 			setCell( cell, AI );
 		}
 		// initiate the next turn
@@ -151,6 +155,7 @@
 		board = [[ null, null, null ],
 				 [ null, null, null ],
 				 [ null, null, null ]];
+      	turn = PLAYER;
 		$board.find('td').removeClass('x o');
 		gameover = false;
 	};
