@@ -1,29 +1,51 @@
+body {
+	font: sans-serif;
+}
+
 #board {
-	border-spacing: 1px;
-	background: #000;
+	border-spacing: 2px;
+	background: rgb( 220, 220, 220 );
+	-webkit-perspective: 1000;
 }
 
 #board tr td {
-	width: 50px;
-	height: 50px;
+	width: 100px;
+	height: 100px;
 	padding: 0;
-	background: #ccc;
-	cursor: pointer;
+	background: rgb( 235, 235, 235 );
+	font-size: 85px;
+	font-weight: bold;
+	text-align: center;
+	border: rgb( 204, 204, 204 ) 2px solid;
+	-webkit-transform-style: preserve-3d;
+	-webkit-transition: 250ms;
+	box-shadow: inset 0px 0px 15px 5px rgba( 0, 0, 0, 0.025 );
 }
 
-#board tr td:hover {
-	background: #bbb;
+#board tr td:hover:not(.x):not(.o) {
+	background: rgb( 255, 255, 255 );
+	box-shadow: inset 0px 0px 25px 5px rgba( 0, 0, 0, 0.045 ), 0px 0px 10px 5px rgba( 255, 255, 255, 0.35 );
+	cursor: pointer;
 }
 
 #board tr td.x,
 #board tr td.o {
-	cursor: auto;
+	background: rgb( 250, 250, 250 );
+	-webkit-transform: rotateX( 180deg );
 }
 
 #board tr td.x {
-	background: #f00;
+	color: #F00;
+}
+
+#board tr td.x:after {
+	content: "\00D7";
 }
 
 #board tr td.o {
-	background: #00f;
+	color: #00F;
+}
+
+#board tr td.o:after {
+	content: "\25CB";
 }

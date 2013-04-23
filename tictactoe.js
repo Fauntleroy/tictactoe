@@ -23,7 +23,7 @@
 	var setCell = function( position, player ){
 		board[ position[0] ][ position[1] ] = player;
 		var $cell = $board.find('tr:eq('+ position[0] +') > td:eq('+ position[1] +')');
-		$cell.html( player ).addClass( player );
+		$cell.addClass( player );
 	};
 
 	// start the next turn
@@ -31,7 +31,7 @@
 		var status = checkStatus();
 		turn = ( turn === AI )? PLAYER: AI;
 		if( turn === AI ){
-			aiMove();
+			setTimeout( aiMove, 750 );
 		}
 	};
 
@@ -151,7 +151,7 @@
 		board = [[ null, null, null ],
 				 [ null, null, null ],
 				 [ null, null, null ]];
-		$board.find('td').removeClass('x o').html('');
+		$board.find('td').removeClass('x o');
 		gameover = false;
 	};
 
@@ -163,7 +163,7 @@
 
 		$board.on( 'click', 'td:not(.x,.o)', function( e ){
 			
-			if( gameover ) return;
+			if( gameover || turn !== PLAYER ) return;
 
 			var $cell = $(this);
 			var $row = $cell.parent();
