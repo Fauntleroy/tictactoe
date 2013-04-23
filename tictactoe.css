@@ -3,6 +3,8 @@ body {
 }
 
 #board {
+	margin: 15px;
+	padding: 0;
 	border-spacing: 2px;
 	background: rgb( 220, 220, 220 );
 	-webkit-perspective: 1000;
@@ -11,6 +13,7 @@ body {
 #board tr td {
 	width: 100px;
 	height: 100px;
+	margin: 0;
 	padding: 0;
 	background: rgb( 235, 235, 235 );
 	font-size: 85px;
@@ -24,8 +27,11 @@ body {
 
 #board tr td:hover:not(.x):not(.o) {
 	background: rgb( 255, 255, 255 );
-	box-shadow: inset 0px 0px 25px 5px rgba( 0, 0, 0, 0.045 ), 0px 0px 10px 5px rgba( 255, 255, 255, 0.35 );
+	box-shadow: inset 0px 0px 25px 5px rgba( 0, 0, 0, 0.045 ), 0px 0px 30px 5px rgba( 255, 255, 255, 0.65 ), 0px 5px 15px 0px rgba(0, 0, 0, 0.5);
 	cursor: pointer;
+	-webkit-transform: rotateX( 5deg ) scale(1.05) translateZ(10px);
+	position: relative;
+	z-index: 99;
 }
 
 #board tr td.x,
